@@ -1,0 +1,24 @@
+{
+    "name": "vue-vitural-scroll-bar",
+    "version": "1.0.1",
+    "description": "'create virtual scrollbar in vue'",
+    "main": "dist/js/vueVirtualScrollBar.js",
+    "files": ["dist", "src"],
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+        "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/w90674/vue-virtual-scrollBar.git"
+    },
+    "keywords": [
+        "virtual-scrollbar"
+    ],
+    "author": "wn",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/w90674/vue-virtual-scrollBar/issues"
+    },
+    "homepage": "https://github.com/w90674/vue-virtual-scrollBar#readme"
+}
