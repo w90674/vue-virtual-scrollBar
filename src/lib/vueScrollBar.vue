@@ -1,12 +1,15 @@
 <template>
-  <div class="scroll-wrapper" @mouseenter="showScroll=true" @mouseleave="showScroll=false">
+  <div class="scroll-wrapper" @mouseenter="showScroll=true" @mouseleave="showScroll=false" :style="{width}">
       <div class="scroll-container" ref="scroll-container" :style="{height:height}">
         <slot class="slot">
            插入需要滚动内容
         </slot>
       </div>
       <!-- 虚拟滚动条（Y轴） -->
-      <div :class="['vertical-bar',{active:showScroll}]"  ref="vertical-bar" :style="{height:height,}" @scroll="handleScroll">
+      <div :class="['vertical-bar',{active:showScroll},{'scroll-bar-style':true}]"  
+      ref="vertical-bar" 
+      :style="{height:height,transform:`translate(${offsetX},0) scale(${sizeX},${sizeY})`,background:barStyle}"
+       @scroll="handleScroll">
         <div class="virtual-content" ref="virtual-content"></div>
       </div>
   </div>
@@ -14,8 +17,29 @@
 
 <script>
 export default {
-  name: 'virtual-scroll-bar',
-  props:['width','height'],
+  name: 'scroll',
+  props:{
+    width:{
+      type:String,
+      default:'500px',
+    },
+    height:{
+       type:String,
+       default:'200px',
+    },
+    offsetX:{
+      type:String,
+      default:'0px',
+    },
+    sizeX:{
+      type:Number,
+      default:1,
+    },
+    sizeY:{
+      type:Number,
+      default:1,
+    }
+  },
   data:function(){
      return{
        showScroll:false,
@@ -34,22 +58,19 @@ export default {
 }
 </script>
 <style scoped>
+@import url('../assets/index.css');
 .scroll-wrapper{
-  width: 500px;
   position: relative;
 }
 .scroll-container{
-  height: 200px;
   width: 100%;
-  border: 1px solid darkgreen;
   overflow:hidden;
 }
 .vertical-bar{
   position: absolute;
-  top: 1%;
-  right: 0px;
+  top: 0;
+  right: 0;
   width: 16px;
-  transform: scaleY(.98);
   overflow-x: hidden;
   overflow-y: auto;
   opacity: 0;
@@ -58,18 +79,5 @@ export default {
 .vertical-bar.active{
   opacity: 1;
 }
-/* ::-webkit-scrollbar{
-  width: 10px;
-  height: 178px;
-  border-radius:5px; 
-}
-::-webkit-scrollbar-thumb{
-  background: red;
-  border-radius:5px; 
-}
-::-webkit-scrollbar-track{
-  background: darkcyan;
-  border-radius:2px; 
-} */
 </style>
 

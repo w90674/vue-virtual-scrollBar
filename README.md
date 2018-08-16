@@ -3,7 +3,7 @@
 - 2、do it just for fun
 - 3、it can create a virutal scrollbar in vertical direction
 
-###preview demo
+### preview demo
 http://pdj97cjik.bkt.clouddn.com/vue-scorllbar.mp4
 
 ### install
@@ -23,4 +23,10 @@ Vue.use(vueScroll)
     </v-scroll-bar>
 ```
 >you should set a container with and height attribute
+
+### api
+- attr
+`width`:container width;
+`height`:container height;
+`offsetX`:scrollbar x position ,default 0
 
