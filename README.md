@@ -3,7 +3,7 @@
 - 2、do it just for fun
 - 3、it can create a virutal scrollbar in vertical direction
 
-###preview demo
+### preview demo
 http://pdj97cjik.bkt.clouddn.com/vue-scorllbar.mp4
 
 ### install
